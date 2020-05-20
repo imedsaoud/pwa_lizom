@@ -7,20 +7,6 @@ workbox.setConfig({
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
 
 workbox.routing.registerRoute(
-	new RegExp('https://jsonplaceholder.typicode.com/(.*)'),
-	new workbox.strategies.CacheFirst({
-		cacheName: 'jsonplaceholder',
-		method: 'GET',
-		cacheableResponse: { statuses: [0, 200] },
-		plugins: [
-			new workbox.expiration.Plugin({
-				maxEntries: 30
-			})
-		]
-	})
-)
-
-workbox.routing.registerRoute(
 	new RegExp('https://fonts.(?:googleapies|gstatic).com/(.*)'),
 	new workbox.strategies.CacheFirst({
 		cacheName: 'googleapis',
@@ -39,7 +25,7 @@ let clickUrl
 // [{ title: "test", url: "http://127.0.0.1:8887/#/" }]
 
 self.addEventListener('push', (event) => {
-  let pushMessage = event.data
+  let pushMessage = even.data
   console.log(pushMessage);
   console.log(event);
   

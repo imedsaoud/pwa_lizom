@@ -132,12 +132,13 @@ export default {
 .card-description {
   text-align: left;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   flex-direction: column;
 }
 
 .card-description-avatar {
   padding-right: 8vw;
+  width: 27vw;
 }
 
 .card-description-name {
@@ -299,6 +300,10 @@ export default {
       top: 0.5vh;
       width: 100%;
       text-align: center;
+  }
+  .card-description-avatar {
+    padding-right: 8vw;
+    width: 10vw;
   }
 
  }
