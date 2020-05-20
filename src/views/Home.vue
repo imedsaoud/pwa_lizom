@@ -227,6 +227,10 @@ h1 {
 
 
 @media (min-width: 1000px) { 
+
+  .home-first-background {
+    width: 100%;
+  }
   .home-description-wrapper {
     padding-right: 15vw; 
     padding-left: 15vw;
@@ -256,7 +260,7 @@ h1 {
       line-height: 25px;
       color: #FFFFFF;
       position: absolute;
-      top: 0.5vh;
+      top: 3.5vh;
       width: 100%;
       text-align: center;
   }

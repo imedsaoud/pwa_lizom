@@ -5,7 +5,7 @@
           <img class="home-first-background" src="../assets/background/home2.png" alt="">
     </header>
     <form class="home-form" action="">
-      <input class="home-form-input-search" placeholder='Mot-clés ...' type="search">
+      <input v-model="autocompletion" class="home-form-input-search" placeholder='Mot-clés ...' type="search">
         <div class="home-form-selects">
           <select name="contrat" id="select">
             <option value="Contrats">Contrat</option>
@@ -28,7 +28,7 @@
     <section class="profils">
       <h1 class="listing-title">Plus de {{profils.length}} candidats vous attendent !</h1>
       <div class="cards-wrapper">
-        <div class="listing-card" v-for="profil in profils" :key="profil.id">
+        <div class="listing-card" v-for="profil in profilList" :key="profil.id">
           <router-link :to="`/article/${profil.id}`" class="card-wrapper">
               <img class="card-description-avatar" src="../assets/avatars/user0.png" alt="">
               <div class="card-description">
@@ -56,12 +56,19 @@ export default {
 
   data() {
     return{
-      profils: profils
+      profils: profils,
+      autocompletion: ''
     }
+    
   },
   created() {
     console.log('hello');
     
+  },
+  computed: {
+    profilList () {
+      return this.profils.filter((e) => e.poste.toLowerCase().includes(this.autocompletion.toLowerCase()))
+    }
   }
 }
 </script>
