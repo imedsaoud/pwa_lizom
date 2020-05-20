@@ -26,7 +26,7 @@
     </form>  
     
     <section class="profils">
-      <h1 class="listing-title">Plus de {{profils.length}} candidats vous attendent !</h1>
+      <h1 class="listing-title">Plus de {{profilList.length}} candidats vous attendent !</h1>
       <div class="cards-wrapper">
         <div class="listing-card" v-for="profil in profilList" :key="profil.id">
           <router-link :to="`/article/${profil.id}`" class="card-wrapper">
