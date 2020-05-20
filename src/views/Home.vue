@@ -44,6 +44,10 @@
           <h2 class="home-description-subtitle">Une recherche plus efficace</h2>
           <p class="home-description-text">Avec Fitjob arrêtez d’écumer les sites de recherche d’emploi, il vous suffit de poster votre profil pour qu’une entreprise vous contact. Fini les demandes sans réponse chaque prise de contact sera une réelle oportunité. Plus de 78% des personnes ayant posté leurs profils ont été co,tacté par une entreprise. Ne perdez plus votre temps avec vos candidatures sans réponse, postez votre profil.</p>
         </div>
+        <div class="home-description-wrapper">
+          <h2 class="home-description-subtitle">Une recherche plus efficace</h2>
+          <p class="home-description-text">Avec Fitjob arrêtez d’écumer les sites de recherche d’emploi, il vous suffit de poster votre profil pour qu’une entreprise vous contact. Fini les demandes sans réponse chaque prise de contact sera une réelle oportunité. Plus de 78% des personnes ayant posté leurs profils ont été co,tacté par une entreprise. Ne perdez plus votre temps avec vos candidatures sans réponse, postez votre profil.</p>
+        </div>
       </section>
 
       
