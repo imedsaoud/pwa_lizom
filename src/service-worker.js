@@ -25,7 +25,7 @@ let clickUrl
 // [{ title: "test", url: "http://127.0.0.1:8887/#/" }]
 
 self.addEventListener('push', (event) => {
-  let pushMessage = even.data
+  let pushMessage = event.data
   console.log(pushMessage);
   console.log(event);
   
