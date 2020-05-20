@@ -249,5 +249,16 @@ h1 {
     margin-top: 6vh;
     margin-bottom: 6vh;
   }
+
+   .home-brand {
+      font-family: Futura;
+      font-size: 45px;
+      line-height: 25px;
+      color: #FFFFFF;
+      position: absolute;
+      top: 0.5vh;
+      width: 100%;
+      text-align: center;
+  }
  }
 </style>
