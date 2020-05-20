@@ -1,6 +1,8 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h1 @click="log()">{{ msg }}</h1>
+    <input type="text" v-model="text">{{text}}
+    <div>{{ isOk }}</div>
     <p>
       For a guide and recipes on how to configure / customize this project,<br>
       check out the
@@ -36,7 +38,29 @@
 export default {
   name: 'HelloWorld',
   props: {
-    msg: String
+    msg: String,
+  },
+  created() {
+    console.log('creation')
+  },
+  mounted() {
+    console.log('mounted')
+  },
+  data() {
+    return {
+      test: "ok",
+      text: null
+    }
+  },
+  computed: {
+    isOk() {
+      return this.test === "ok" ? true : false
+    }
+  },
+  methods: {
+    log() {
+      console.log('test')
+    }
   }
 }
 </script>
@@ -55,6 +79,6 @@ li {
   margin: 0 10px;
 }
 a {
-  color: #42b983;
+  color: #3232AF;
 }
 </style>

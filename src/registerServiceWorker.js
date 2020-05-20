@@ -9,6 +9,17 @@ if (process.env.NODE_ENV === 'production') {
         'App is being served from cache by a service worker.\n' +
         'For more details, visit https://goo.gl/AFskqB'
       )
+
+      Notification.requestPermission().then((result) => {
+        if(result === "granted") {
+          console.log('notification accepter')
+          // const subscription = await serviceWorker.pushManager.subscribe({ userVisibleOnly: true, applicationServerKey: urlBase64ToUint8Array(window.publicKey) });
+          // let keys = subscription.toJSON().keys;
+        }
+        else {
+          console.log('notification refuse')
+        }
+      })
     },
     registered () {
       console.log('Service worker has been registered.')

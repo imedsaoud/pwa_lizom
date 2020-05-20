@@ -7,6 +7,10 @@ module.exports = {
 		appleMobileWebAppStatusBarStyle: 'black',
 		manifestOptions: {
 			display: 'fullscreen'
+		},
+		workboxPluginMode:'InjectManifest',
+		workboxOptions: {
+			swSrc:'src/service-worker.js'
 		}
 	}
 }

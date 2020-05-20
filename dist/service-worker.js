@@ -1,34 +1,71 @@
-/**
- * Welcome to your Workbox-powered service worker!
- *
- * You'll need to register this file in your web app and you should
- * disable HTTP caching for this file too.
- * See https://goo.gl/nhQhGp
- *
- * The rest of the code is auto-generated. Please don't update this file
- * directly; instead, make changes to your Workbox build configuration
- * and re-run your build process.
- * See https://goo.gl/2aRDsh
- */
+importScripts("/precache-manifest.4beb51f9c2fc9e196251fc4241888afd.js", "https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
-importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
+self.__precacheManifest = [].concat(self.__precacheManifest || [])
 
-importScripts(
-  "/precache-manifest.c6f724382f1e7219beea123d026536ea.js"
-);
+workbox.setConfig({
+	debug: true
+})
 
-workbox.core.setCacheNameDetails({prefix: "pwa_lizom"});
+workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
 
-self.addEventListener('message', (event) => {
-  if (event.data && event.data.type === 'SKIP_WAITING') {
-    self.skipWaiting();
-  }
-});
+workbox.routing.registerRoute(
+	new RegExp('https://jsonplaceholder.typicode.com/(.*)'),
+	new workbox.strategies.CacheFirst({
+		cacheName: 'jsonplaceholder',
+		method: 'GET',
+		cacheableResponse: { statuses: [0, 200] },
+		plugins: [
+			new workbox.expiration.Plugin({
+				maxEntries: 30
+			})
+		]
+	})
+)
 
-/**
- * The workboxSW.precacheAndRoute() method efficiently caches and responds to
- * requests for URLs in the manifest.
- * See https://goo.gl/S9QRab
- */
-self.__precacheManifest = [].concat(self.__precacheManifest || []);
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
+workbox.routing.registerRoute(
+	new RegExp('https://fonts.(?:googleapies|gstatic).com/(.*)'),
+	new workbox.strategies.CacheFirst({
+		cacheName: 'googleapis',
+		method: 'GET',
+		cacheableResponse: { statuses: [0, 200] },
+		plugins: [
+			new workbox.expiration.Plugin({
+				maxEntries: 30
+			})
+		]
+	})
+)
+
+let clickUrl
+
+// [{ title: "test", url: "http://127.0.0.1:8887/#/" }]
+
+self.addEventListener('push', (event) => {
+  let pushMessage = event.data
+  console.log(pushMessage);
+  console.log(event);
+  
+
+	clickUrl = pushMessage
+
+	const options = {
+		body: pushMessage,
+		icon: './img/apple-touch-icon-60x60.png',
+		image: './img/apple-touch-icon-60x60.png',
+		vibrate: [200, 100, 200, 100],
+		tag: 'vibration-sample'
+	}
+
+	event.waitUntil(
+		self.registration.showNotification(pushMessage, options)
+	)
+})
+
+self.addEventListener('notificationclick', (event) => {
+	event.notification.close()
+
+	const promiseChain = clients.openWindow(clickUrl)
+	event.waitUntil(
+		promiseChain
+	)
+})
